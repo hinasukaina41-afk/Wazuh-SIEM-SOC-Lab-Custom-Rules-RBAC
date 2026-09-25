@@ -18,30 +18,6 @@
 This project documents the development of a **hands-on Security Operations Center (SOC) monitoring lab** using **Wazuh SIEM, Kali Linux, and VMware Workstation Pro**.
 
 The lab progresses from building the virtual security environment to developing and validating a custom detection pipeline.
-```text
-┌────────────────────────┐
-│     SECURITY EVENT     │
-│  Failed Login Attempt  │
-└───────────┬────────────┘
-            │
-            ▼
-┌────────────────────────┐
-│      WAZUH AGENT       │
-│ Logs collected & sent  │
-└───────────┬────────────┘
-            │
-            ▼
-┌────────────────────────┐
-│     WAZUH MANAGER      │
-│ Decoded & Rule Matched │
-└───────────┬────────────┘
-            │
-            ▼
-┌────────────────────────┐
-│    WAZUH DASHBOARD     │
-│ Alert → Investigation →│
-│ Visualization → Response│
-└────────────────────────┘
 
 ---
 
