@@ -41,6 +41,8 @@ The lab progresses from building the virtual security environment to developing 
 │ Alert → Investigation →│
 │ Visualization → Response│
 └────────────────────────┘
+---
+
 ## 🎯 Objectives
 The primary objectives of this project were to:
 
