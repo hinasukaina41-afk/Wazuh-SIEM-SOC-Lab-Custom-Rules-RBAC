@@ -44,9 +44,9 @@ The lab progresses from building the virtual security environment to developing 
 └────────────────────────┘
 
 
-🎯 ObjectivesThe primary objectives of this project were to:Build an isolated SOC laboratory environment.   Deploy and configure a Wazuh Manager.   Connect a Kali Linux endpoint as a Wazuh Agent.   Validate endpoint-to-manager communication.   Generate controlled security events.   Test authentication-failure detection.   Test File Integrity Monitoring (FIM).   Generate network reconnaissance activity using Nmap.   Develop a custom Wazuh decoder.Develop a custom Wazuh detection rule.Map the detection to MITRE ATT&CK T1110 — Brute Force.Validate the detection using wazuh-logtest.Verify the alert in the Wazuh Dashboard.Build a saved search and visualization.Configure a read-only analyst role using Wazuh RBAC.
+##🎯 ObjectivesThe primary objectives of this project were to:Build an isolated SOC laboratory environment.   Deploy and configure a Wazuh Manager.   Connect a Kali Linux endpoint as a Wazuh Agent.   Validate endpoint-to-manager communication.   Generate controlled security events.   Test authentication-failure detection.   Test File Integrity Monitoring (FIM).   Generate network reconnaissance activity using Nmap.   Develop a custom Wazuh decoder.Develop a custom Wazuh detection rule.Map the detection to MITRE ATT&CK T1110 — Brute Force.Validate the detection using wazuh-logtest.Verify the alert in the Wazuh Dashboard.Build a saved search and visualization.Configure a read-only analyst role using Wazuh RBAC.
 
-🏗️ Lab Architecture
+##🏗️ Lab Architecture
 Network Topology Diagram
 ┌─────────────────────────────────────────┐
 │               HOST SYSTEM               │
@@ -68,11 +68,12 @@ Network Topology Diagram
 │  Test Events   │        │ Wazuh Dashboard│
 └────────────────┘        └────────────────┘
 
-Network Configuration MatrixEntityRoleIP AddressVMware VMnet8NAT Gateway192.168.44.2Kali LinuxAttacker / Monitored Endpoint192.168.44.130Wazuh ApplianceAll-in-One SIEM Monitoring Stack192.168.10.187
+##Network Configuration
+ MatrixEntityRoleIP AddressVMware VMnet8NAT Gateway192.168.44.2Kali LinuxAttacker / Monitored Endpoint192.168.44.130Wazuh ApplianceAll-in-One SIEM Monitoring Stack192.168.10.187
 
-🧰 Technology StackTechnologyPurpose🛡️ WazuhSIEM, log analysis, detection and monitoring🐉 Kali LinuxSecurity testing endpoint💻 VMware WorkstationVirtualized laboratory infrastructure🔍 Nmap / HydraNetwork reconnaissance & brute force testing📊 Wazuh DashboardAlert investigation and visualization🧪 wazuh-logtestDecoder and rule validation🎯 MITRE ATT&CKAdversary technique mapping🔐 RBACLeast-privilege SOC access control
+##🧰 Technology StackTechnologyPurpose🛡️ WazuhSIEM, log analysis, detection and monitoring🐉 Kali LinuxSecurity testing endpoint💻 VMware WorkstationVirtualized laboratory infrastructure🔍 Nmap / HydraNetwork reconnaissance & brute force testing📊 Wazuh DashboardAlert investigation and visualization🧪 wazuh-logtestDecoder and rule validation🎯 MITRE ATT&CKAdversary technique mapping🔐 RBACLeast-privilege SOC access control
 
-🔄 Log Parsing & Custom Rule Pipeline
+##🔄 Log Parsing & Custom Rule Pipeline
 ┌───────────────────────────┐
 │    /var/log/custom.log    │
 │  (Raw Custom App Log)     │
