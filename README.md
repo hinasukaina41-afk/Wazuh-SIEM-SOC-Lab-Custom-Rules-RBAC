@@ -43,41 +43,40 @@ The lab progresses from building the virtual security environment to developing 
 └────────────────────────┘
 ```
 ---
-```
 
 ## 🎯 Objectives
-The primary objectives of this project were to:
+_The primary objectives of this project were to:
 
-Build an isolated SOC laboratory environment.
+_Build an isolated SOC laboratory environment.
 
-Deploy and configure a Wazuh Manager.
+_Deploy and configure a Wazuh Manager.
 
-Connect a Kali Linux endpoint as a Wazuh Agent.
+_Connect a Kali Linux endpoint as a Wazuh Agent.
 
-Validate endpoint-to-manager communication.
+_Validate endpoint-to-manager communication.
 
-Generate controlled security events.
+_Generate controlled security events.
 
-Test authentication-failure detection.
+_Test authentication-failure detection.
 
-Test File Integrity Monitoring (FIM).
+_Test File Integrity Monitoring (FIM).
 
-Generate network reconnaissance activity using Nmap.
+_Generate network reconnaissance activity using Nmap.
 
-Develop a custom Wazuh decoder.
+_Develop a custom Wazuh decoder.
 
-Develop a custom Wazuh detection rule.
+_Develop a custom Wazuh detection rule.
 
-Map the detection to MITRE ATT&CK T1110 — Brute Force.
+_Map the detection to MITRE ATT&CK T1110 — Brute Force.
 
-Validate the detection using wazuh-logtest.
+_Validate the detection using wazuh-logtest.
 
-Verify the alert in the Wazuh Dashboard.
+_Verify the alert in the Wazuh Dashboard.
 
-Build a saved search and visualization.
+_Build a saved search and visualization.
 
-Configure a read-only analyst role using Wazuh RBAC.
-```
+_Configure a read-only analyst role using Wazuh RBAC.
+
 ---
 
 ## 🏗️ Lab Architecture
@@ -132,32 +131,32 @@ Configure a read-only analyst role using Wazuh RBAC.
 ```
 ---
 
-## 🚀 Phase 1 — Virtual SOC Lab Setup & Monitoring Fundamentals[cite: 15, 16]
+## 🚀 Phase 1 — Virtual SOC Lab Setup
 
-### 1. VMware Workstation Setup & Network Architecture[cite: 16]
+### 1. VMware Workstation Setup & Network Architecture
 
-The laboratory is hosted on **VMware Workstation Pro**. All guests are attached to a NAT-backed virtual network (VMnet8). The NAT subnet is configured with a gateway at `.2` and a DHCP scope supplying dynamic leases. Static reservations were applied to the monitoring host to guarantee address stability for agent enrolment[cite: 16].
+The laboratory is hosted on **VMware Workstation Pro**. All guests are attached to a NAT-backed virtual network (VMnet8). The NAT subnet is configured with a gateway at `.2` and a DHCP scope supplying dynamic leases. Static reservations were applied to the monitoring host to guarantee address stability for agent enrolment.
 
-**Rationale for selecting NAT:**[cite: 16]
+**Rationale for selecting NAT:**
 
-- **Isolation:** Guests are not exposed on the physical LAN, containing attack traffic[cite: 16].
-- **Controlled Internet Access:** Outbound connectivity is preserved through host address translation[cite: 16].
-- **Host Communication:** The VMnet8 host adapter enables the analyst to reach the Wazuh dashboard over HTTPS[cite: 17].
-- **Deterministic Addressing:** A private, hypervisor-managed DHCP scope avoids collisions[cite: 17].
+- **Isolation:** Guests are not exposed on the physical LAN, containing attack traffic.
+- **Controlled Internet Access:** Outbound connectivity is preserved through host address translation.
+- **Host Communication:** The VMnet8 host adapter enables the analyst to reach the Wazuh dashboard over HTTPS.
+- **Deterministic Addressing:** A private, hypervisor-managed DHCP scope avoids collisions.
 
 ---
 
-### 2. Kali Linux & Wazuh OVA Import & Boot Verification[cite: 17]
+### 2. Kali Linux & Wazuh OVA Import & Boot Verification
 
-Both appliances were deployed from OVA images. The import procedure involved:[cite: 17]
+Both appliances were deployed from OVA images. The import procedure involved:
 
-- Selecting `File > Open` in VMware Workstation and choosing the downloaded `.ova` file[cite: 17].
-- Accepting the OVF licence agreement and selecting a storage path[cite: 17].
-- Allocating resources: **Wazuh** (4 vCPU / 8 GB RAM); **Kali** (2 vCPU / 4 GB RAM)[cite: 18].
-- Setting the network adapter of each VM to **NAT (VMnet8)**[cite: 18].
-- Powering on each VM and recording the leased IP address[cite: 18].
+- Selecting `File > Open` in VMware Workstation and choosing the downloaded `.ova` file.
+- Accepting the OVF licence agreement and selecting a storage path.
+- Allocating resources: **Wazuh** (4 vCPU / 8 GB RAM); **Kali** (2 vCPU / 4 GB RAM).
+- Setting the network adapter of each VM to **NAT (VMnet8)**.
+- Powering on each VM and recording the leased IP address.
 
-**Boot Verification Commands:**[cite: 18]
+**Boot Verification Commands:**
 
 ```bash
 # On Kali
@@ -169,4 +168,3 @@ uptime
 ip -brief address show
 hostnamectl
 uptime
-
