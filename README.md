@@ -41,6 +41,7 @@ The lab progresses from building the virtual security environment to developing 
 │ Alert → Investigation →│
 │ Visualization → Response│
 └────────────────────────┘
+```
 ---
 
 ## 🎯 Objectives
@@ -75,10 +76,12 @@ Verify the alert in the Wazuh Dashboard.
 Build a saved search and visualization.
 
 Configure a read-only analyst role using Wazuh RBAC.
+```
 
 ---
 
-##🏗️ Lab Architecture
+## 🏗️ Lab Architecture
+```text
 
 ┌─────────────────────────────────────────┐
 │               HOST SYSTEM               │
@@ -99,10 +102,14 @@ Configure a read-only analyst role using Wazuh RBAC.
 │  Nmap / Hydra  │  Logs  │  Wazuh Indexer │
 │  Test Events   │        │ Wazuh Dashboard│
 └────────────────┘        └────────────────┘
-
+```
 ---
-Network Configuration Matrix
-Entity               Role                             IPAddress
-VMware VMnet8        NATGateway                       192.168.44.
-2Kali Linux          Attacker / Monitored Endpoint    192.168.44.130
-Wazuh Appliance      All-in-One SIEM Monitoring Stack 192.168.10.187
+## Network Configuration Matrix
+|Entity         |      Role                           |   IPAddress
+|:---|:---|
+VMware VMnet8   |    NATGateway                       |   192.168.44.
+2Kali Linux     |     Attacker / Monitored Endpoint   |  192.168.44.130
+Wazuh Appliance |     All-in-One SIEM Monitoring Stack|  192.168.10.187
+```
+---
+
