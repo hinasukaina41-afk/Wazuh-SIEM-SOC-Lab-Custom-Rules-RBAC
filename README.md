@@ -43,6 +43,7 @@ The lab progresses from building the virtual security environment to developing 
 └────────────────────────┘
 ```
 ---
+```
 
 ## 🎯 Objectives
 The primary objectives of this project were to:
@@ -77,7 +78,6 @@ Build a saved search and visualization.
 
 Configure a read-only analyst role using Wazuh RBAC.
 ```
-
 ---
 
 ## 🏗️ Lab Architecture
@@ -105,11 +105,68 @@ Configure a read-only analyst role using Wazuh RBAC.
 ```
 ---
 ## Network Configuration Matrix
-|Entity         |      Role                           |   IPAddress
-|:---|:---|
-VMware VMnet8   |    NATGateway                       |   192.168.44.
-2Kali Linux     |     Attacker / Monitored Endpoint   |  192.168.44.130
-Wazuh Appliance |     All-in-One SIEM Monitoring Stack|  192.168.10.187
+| Component | Configuration |
+| :--- | :--- |
+| Network | VMware NAT Network (VMnet8) |
+| Subnet | `192.168.xx.xx/xx` |
+| Gateway (NAT) | `192.168.xx.xx` |
+| DHCP Scope | `192.168.xx.xx - 192.168.xx.xx` |
+| Wazuh Server (SIEM) | `192.168.xx.xx` |
+| Kali Linux (Attacker) | `192.168.xx.xx` |
+| Monitoring Platform | Wazuh (All-in-One) |
 ```
 ---
+## 💼 Technology Stack
+```
+| Technology | Purpose |
+| :--- | :--- |
+| 🛡️ **Wazuh** | SIEM, XDR, log analysis, detection and monitoring[cite: 14] |
+| 🐉 **Kali Linux** | Offensive security testing endpoint[cite: 14] |
+| 💻 **VMware Workstation Pro** | Virtualized laboratory infrastructure (Type 2 Hypervisor)[cite: 14] |
+| 🔍 **Nmap** | Network reconnaissance testing[cite: 14] |
+| 🗡️ **Hydra** | SSH brute-force simulation[cite: 14] |
+| 📊 **Wazuh Dashboard** | Alert investigation and visualization[cite: 14] |
+| 🧪 **wazuh-logtest** | Decoder and rule validation[cite: 15] |
+| 🎯 **MITRE ATT&CK** | Adversary technique mapping[cite: 15] |
+| 🔐 **RBAC** | Least-privilege SOC access control[cite: 15] |
+```
+---
+
+## 🚀 Phase 1 — Virtual SOC Lab Setup & Monitoring Fundamentals[cite: 15, 16]
+
+### 1. VMware Workstation Setup & Network Architecture[cite: 16]
+
+The laboratory is hosted on **VMware Workstation Pro**. All guests are attached to a NAT-backed virtual network (VMnet8). The NAT subnet is configured with a gateway at `.2` and a DHCP scope supplying dynamic leases. Static reservations were applied to the monitoring host to guarantee address stability for agent enrolment[cite: 16].
+
+**Rationale for selecting NAT:**[cite: 16]
+
+- **Isolation:** Guests are not exposed on the physical LAN, containing attack traffic[cite: 16].
+- **Controlled Internet Access:** Outbound connectivity is preserved through host address translation[cite: 16].
+- **Host Communication:** The VMnet8 host adapter enables the analyst to reach the Wazuh dashboard over HTTPS[cite: 17].
+- **Deterministic Addressing:** A private, hypervisor-managed DHCP scope avoids collisions[cite: 17].
+
+---
+
+### 2. Kali Linux & Wazuh OVA Import & Boot Verification[cite: 17]
+
+Both appliances were deployed from OVA images. The import procedure involved:[cite: 17]
+
+- Selecting `File > Open` in VMware Workstation and choosing the downloaded `.ova` file[cite: 17].
+- Accepting the OVF licence agreement and selecting a storage path[cite: 17].
+- Allocating resources: **Wazuh** (4 vCPU / 8 GB RAM); **Kali** (2 vCPU / 4 GB RAM)[cite: 18].
+- Setting the network adapter of each VM to **NAT (VMnet8)**[cite: 18].
+- Powering on each VM and recording the leased IP address[cite: 18].
+
+**Boot Verification Commands:**[cite: 18]
+
+```bash
+# On Kali
+ip -brief address show
+hostnamectl
+uptime
+
+# On Wazuh
+ip -brief address show
+hostnamectl
+uptime
 
